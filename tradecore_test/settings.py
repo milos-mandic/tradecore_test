@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'tradecore_test.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tradecore_test',
+        'NAME': 'tradecore',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
@@ -119,6 +119,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'utils.exceptions.core_exception_handler',
+    'NON_FIELD_ERRORS_KEY': 'error',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'api.backends.JWTAuthentication',
+    ),
+}
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -137,3 +146,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAILHUNTER_KEY = "7cf4923bcbb25a08b24ed13d49ed83a1bbb8af35"
+CLEARBIT_KEY = "sk_49b9dea3a15bf43ce8ea78b00884721a"
+
+AUTH_USER_MODEL = 'social_network.User'
