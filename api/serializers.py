@@ -145,7 +145,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ('id','creator', 'text', 'users_liked')
+        fields = ('id', 'creator', 'text', 'users_liked')
 
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(PostSerializer, self).get_validation_exclusions()
@@ -158,7 +158,7 @@ class PostLikeUnlikeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ('creator', 'text', 'users_liked')
+        fields = ('id', 'creator', 'text', 'users_liked')
         read_only_fields = ('id', 'creator', 'text', 'users_liked')
 
     def get_validation_exclusions(self, *args, **kwargs):

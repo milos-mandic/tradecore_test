@@ -7,10 +7,11 @@ from django.conf.urls import url, include
 from rest_framework import routers
 
 from .views import RegistrationAPIView, LoginAPIView, UserRetrieveUpdateAPIView, ProfileRetrieveAPIView, PostViewSet,\
-    PostLikeViewSet, PostUnlikeViewSet
+    PostLikeViewSet, PostUnlikeViewSet, OthersPostsViewSet
 
 router = routers.DefaultRouter()
 router.register('posts', PostViewSet)
+router.register('others_posts', OthersPostsViewSet)
 router.register('post_like', PostLikeViewSet)
 router.register('post_unlike', PostUnlikeViewSet)
 

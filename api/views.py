@@ -4,6 +4,7 @@ from rest_framework.generics import RetrieveUpdateAPIView, RetrieveAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.db.models.query import QuerySet
 
 from social_network.models import Profile, Post
 from social_network.tasks import check_email_existence
@@ -125,6 +126,29 @@ class PostViewSet(viewsets.ModelViewSet):
         instance = serializer.save(creator=self.request.user)
 
         return super(PostViewSet, self).perform_create(serializer)
+
+
+class OthersPostsViewSet(viewsets.ModelViewSet):
+    """
+
+    """
+    queryset = Post.objects.all()
+    permission_classes = (IsAuthenticated,)
+    serializer_class = PostSerializer
+    http_method_names = ['get']
+
+    def get_queryset(self):
+        assert self.queryset is not None, (
+                "'%s' should either include a `queryset` attribute, "
+                "or override the `get_queryset()` method."
+                % self.__class__.__name__
+        )
+
+        queryset = self.queryset
+        if isinstance(queryset, QuerySet):
+            # Ensure queryset is re-evaluated on each request.
+            queryset = queryset.exclude(creator=self.request.user)
+        return queryset
 
 
 class PostLikeViewSet(viewsets.ModelViewSet):

@@ -55,3 +55,5 @@ def enrich_user(user):
             user.profile.save()
     except HTTPError:
         print("No more calls left for Clearbit API service!")
+    except TypeError:
+        print("No more calls left for Clearbit API service!")
