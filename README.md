@@ -51,6 +51,8 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
+## Test the API:
+Import TradeCore.postman_collection.json to Postman
 ## Run the bot with:
 ```
 python bot.py
