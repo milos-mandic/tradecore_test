@@ -1,12 +1,15 @@
 import yaml
 import string
+import os
 import random
 
 from operator import itemgetter
 
-from .requests import user_signup, post_creation, post_like, get_others_posts
+from bot.requests import user_signup, post_creation, post_like, get_others_posts
 
-stream = open('bot/config.yaml', 'r')
+cwd = os.getcwd()
+print(cwd)
+stream = open('config.yaml', 'r')
 config = yaml.load(stream)
 
 
@@ -69,7 +72,7 @@ def start_to_like_posts(sorted_users):
             list_of_eligible_posts = eligible_posts(posts, eligible_users(posts))
             if not list_of_eligible_posts:
                 print('No more posts with 0 likes!')
-                break
+                return
             else:
                 post_id = post_like(user.get('token'), random.choice(list_of_eligible_posts))
                 if post_id is not None:

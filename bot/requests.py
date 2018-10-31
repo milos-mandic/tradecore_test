@@ -92,8 +92,6 @@ def post_like(token, post_id):
     response = requests.request("PUT", url, data=json.dumps(payload), headers=headers)
     if response.status_code == 200:
         return json.loads(response.text).get("post").get("id")
-    else:
-        print(response.text)
 
 
 def post_unlike(token, post_id):

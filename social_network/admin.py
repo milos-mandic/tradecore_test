@@ -14,6 +14,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('id',
                     'creator',
                     'text',
+                    'no_of_likes'
                     )
 
 
