@@ -14,7 +14,7 @@ sudo su - postgres
 createdb --owner postgres tradecore
 psql
 ALTER USER postgres PASSWORD ‘postgres’;
-/q
+\q
 logout
 ```
 ## Install Python 3.5
