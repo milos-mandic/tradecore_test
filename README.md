@@ -8,12 +8,14 @@ wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key a
 sudo apt-get update
 sudo aptitude install postgresql postgresql-contrib
 ```
-## Create Socialising user and change password
+## Create user and change password
 ```
 sudo su - postgres
 createdb --owner postgres tradecore
 psql
 ALTER USER postgres PASSWORD ‘postgres’;
+/q
+logout
 ```
 ## Install Python 3.5
 ```
@@ -24,8 +26,8 @@ sudo apt-get install python3.5
 ## Install virtualenv
 ```
 sudo aptitude install python-virtualenv
-mkdir project
-cd project
+mkdir tradecore_test
+cd tradecore_test
 virtualenv venv -p python3.5
 source venv/bin/activate
 ```
