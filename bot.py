@@ -9,7 +9,7 @@ from bot.requests import user_signup, post_creation, post_like, get_others_posts
 
 cwd = os.getcwd()
 print(cwd)
-stream = open('config.yaml', 'r')
+stream = open('bot/config.yaml', 'r')
 config = yaml.load(stream)
 
 
